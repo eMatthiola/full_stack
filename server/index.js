@@ -86,3 +86,17 @@ app.delete("/todos/:id", async (req, res) => {
         console.log(err.message);
     }
 });
+
+//get all users
+app.get("/users", async (req, res) => {
+    console.log("GET /todos called");
+    try {
+        const allTodos = await pool.query(
+            "SELECT * FROM users");
+
+        res.json(allTodos.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
